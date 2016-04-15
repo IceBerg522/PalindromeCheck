@@ -11,6 +11,7 @@ public class PalindromeChecker extends AppCompatActivity {
     EditText edtxtUserWord;
     TextView txtvwResult;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,24 +26,35 @@ public class PalindromeChecker extends AppCompatActivity {
      * palindromeCheck is the method that gets called when the user clicks the button to check
      * whether the word they entered is a palindrome. It calls a recursive method to find out
      * whether the word is a palindrome.
+     *
      * @param vw is the button that is associated with this method
      */
-    public void palindromeCheck(View vw){
+    public void palindromeCheck(View vw) {
 
         //Get the user input here
+        String userInput = "";
 
-        checkForPalindrome(userInput, 0);
 
+        if (edtxtUserWord.getText().toString().equals("")) {
+            txtvwResult.setText("You must enter a word(s)!");
+        } else {
+            userInput = edtxtUserWord.getText().toString();
+            checkForPalindrome(userInput, 0);
+        }
     }
+
+
+
+
 
     /**
      * checkForPalindrome is a recursive method that checks for whether an inputted word is a
      * palindrome
-     * @param word is the word that will be checked for whether it is a palindrome or not
+     *
+     * @param word  is the word that will be checked for whether it is a palindrome or not
      * @param index is the index currently being checked
      */
-    private void checkForPalindrome(String word, int index){
-
+    private void checkForPalindrome(String word, int index) {
         /**
          * Store the index that is equally distant from the end of the word as the current index
          * is from the beginning of the word in a variable
@@ -56,5 +68,22 @@ public class PalindromeChecker extends AppCompatActivity {
          * If the letters are not equal, display that the word is not a palindrome.
          */
 
+        Integer indexFromTheEnd = word.length() - (index - 1);
+        boolean check;
+        if (word.charAt(index) == word.charAt(indexFromTheEnd)) {
+            if (index == indexFromTheEnd - 1 || index == indexFromTheEnd) {
+                    check = true;
+            } else {
+                index = index + 1;
+                checkForPalindrome(word, index);
+            }
+        }
+        else  {
+            check = false;
+
+        }
+
     }
+
 }
+

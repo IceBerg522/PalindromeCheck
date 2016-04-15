@@ -22,9 +22,9 @@
         android:layout_height="wrap_content"
         android:text="Check!"
         android:id="@+id/btnCheckPalindrome"
+        android:onClick="palindromeCheck"
         android:layout_below="@+id/edtxtUserWord"
-        android:layout_centerHorizontal="true"
-        android:onClick="palindromeCheck" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
